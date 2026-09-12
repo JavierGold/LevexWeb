@@ -9,6 +9,14 @@ const EquipmentDetailPage = lazy(
   () => import('../pages/EquipmentDetailPage.jsx'),
 )
 
+const AboutPage = lazy(() => import('../pages/AboutPage.jsx'))
+
+const aboutPageFallback = (
+  <main className="route-loading" aria-live="polite">
+    Cargando Sobre Nosotros…
+  </main>
+)
+
 const equipmentDetailFallback = (
   <main className="route-loading" aria-live="polite">
     Cargando equipo…
@@ -16,7 +24,6 @@ const equipmentDetailFallback = (
 )
 
 const secondaryPages = [
-  { path: ROUTES.about, title: 'Sobre Nosotros' },
   { path: ROUTES.contact, title: 'Contacto' },
 ]
 
@@ -25,6 +32,14 @@ export default function App() {
     <SiteLayout>
       <Routes>
         <Route path={ROUTES.home} element={<HomePage />} />
+        <Route
+          path={ROUTES.about}
+          element={
+            <Suspense fallback={aboutPageFallback}>
+              <AboutPage />
+            </Suspense>
+          }
+        />
         {secondaryPages.map(({ path, title }) => (
           <Route
             key={path}

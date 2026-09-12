@@ -883,7 +883,11 @@
   }
 
   .advice-section__copy {
-    padding-top: 4.75rem;
+    padding: 4.75rem 0 0;
+  }
+
+  .advice-section__copy > p:last-of-type {
+    margin-top: 1.35rem;
   }
 
   .advice-section h2,
@@ -894,17 +898,31 @@
   }
 
   .advice-section__cta {
-    width: 100%;
-    justify-content: space-between;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 3.25rem;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0.4rem 0.4rem 0.4rem 1.05rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.065em;
+  }
+
+  .advice-section__cta > span:last-child {
+    width: 2.3rem;
+    height: 2.3rem;
   }
 
   .advice-section__visual {
-    min-height: 23rem;
+    min-height: 25rem;
+    margin-top: 2.75rem;
   }
 
   .advice-section__visual img {
-    right: -8.5rem;
-    width: 39rem;
+    right: -7rem;
+    bottom: -0.75rem;
+    width: 32rem;
   }
 
   .benefits-list li {
