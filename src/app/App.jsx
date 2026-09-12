@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ROUTES } from './routes.js'
-import FoundationPage from '../pages/FoundationPage.jsx'
 import HomePage from '../pages/HomePage.jsx'
 import SiteLayout from '../layouts/SiteLayout.jsx'
 
@@ -10,10 +9,17 @@ const EquipmentDetailPage = lazy(
 )
 
 const AboutPage = lazy(() => import('../pages/AboutPage.jsx'))
+const ContactPage = lazy(() => import('../pages/ContactPage.jsx'))
 
 const aboutPageFallback = (
   <main className="route-loading" aria-live="polite">
     Cargando Sobre Nosotros…
+  </main>
+)
+
+const contactPageFallback = (
+  <main className="route-loading" aria-live="polite">
+    Cargando Contacto…
   </main>
 )
 
@@ -22,10 +28,6 @@ const equipmentDetailFallback = (
     Cargando equipo…
   </main>
 )
-
-const secondaryPages = [
-  { path: ROUTES.contact, title: 'Contacto' },
-]
 
 export default function App() {
   return (
@@ -40,13 +42,14 @@ export default function App() {
             </Suspense>
           }
         />
-        {secondaryPages.map(({ path, title }) => (
-          <Route
-            key={path}
-            path={path}
-            element={<FoundationPage title={title} />}
-          />
-        ))}
+        <Route
+          path={ROUTES.contact}
+          element={
+            <Suspense fallback={contactPageFallback}>
+              <ContactPage />
+            </Suspense>
+          }
+        />
         <Route
           path={ROUTES.equipment}
           element={

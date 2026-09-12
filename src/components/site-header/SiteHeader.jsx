@@ -61,20 +61,29 @@ function NavigationLinks({ onNavigate, mobile = false }) {
   })
 }
 
-function HeaderCta({ className, onNavigate }) {
+function HeaderCta({ className, onNavigate, onQuoteRequest }) {
+  const handleClick = () => {
+    onNavigate?.()
+    onQuoteRequest()
+  }
+
   return (
-    <Link className={`header-cta ${className}`} to={ROUTES.contact} onClick={onNavigate}>
+    <button
+      className={`header-cta ${className}`}
+      type="button"
+      onClick={handleClick}
+    >
       <span>Cotizar</span>
       <span className="header-cta__arrow" aria-hidden="true">
         <svg viewBox="0 0 20 20" focusable="false">
           <path d="M4 10h11M11 6l4 4-4 4" />
         </svg>
       </span>
-    </Link>
+    </button>
   )
 }
 
-export default function SiteHeader() {
+export default function SiteHeader({ onQuoteRequest }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuButtonRef = useRef(null)
 
@@ -100,7 +109,10 @@ export default function SiteHeader() {
           <NavigationLinks />
         </nav>
 
-        <HeaderCta className="header-cta--desktop" />
+        <HeaderCta
+          className="header-cta--desktop"
+          onQuoteRequest={onQuoteRequest}
+        />
 
         <button
           ref={menuButtonRef}
@@ -125,7 +137,11 @@ export default function SiteHeader() {
         <div className="mobile-menu" id="mobile-navigation">
           <nav className="mobile-menu__inner" aria-label="Navegación móvil">
             <NavigationLinks mobile onNavigate={closeMenu} />
-            <HeaderCta className="header-cta--mobile" onNavigate={closeMenu} />
+            <HeaderCta
+              className="header-cta--mobile"
+              onNavigate={closeMenu}
+              onQuoteRequest={onQuoteRequest}
+            />
           </nav>
         </div>
       ) : null}

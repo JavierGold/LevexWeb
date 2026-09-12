@@ -76,6 +76,7 @@
   background: var(--color-brand-950);
   box-shadow: 0 0.5rem 1.25rem rgb(13 57 34 / 14%);
   color: var(--color-surface);
+  cursor: pointer;
   font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.055em;

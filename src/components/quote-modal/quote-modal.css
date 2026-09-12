@@ -1,0 +1,134 @@
+.quote-modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  overflow-y: auto;
+  background: rgb(5 20 12 / 72%);
+  backdrop-filter: blur(10px);
+  place-items: center;
+  animation: quote-backdrop-enter 220ms ease both;
+}
+
+.quote-modal__panel {
+  position: relative;
+  width: min(100%, 62rem);
+  max-height: calc(100svh - clamp(2rem, 6vw, 5rem));
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow-y: auto;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: clamp(1rem, 2.5vw, 1.75rem);
+  background: var(--color-surface);
+  box-shadow: 0 2.5rem 7rem rgb(3 17 9 / 35%);
+  animation: quote-panel-enter 420ms var(--ease-out) both;
+}
+
+.quote-modal__close {
+  position: absolute;
+  z-index: 2;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-brand-950);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.quote-modal__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.quote-modal__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.quote-modal__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.quote-modal__close:hover {
+  color: var(--color-on-brand);
+  background: var(--color-brand-700);
+  transform: rotate(4deg);
+}
+
+.quote-modal__header {
+  max-width: 40rem;
+  margin-bottom: clamp(2.25rem, 5vw, 3.75rem);
+  padding-right: 3rem;
+}
+
+.quote-modal__header p {
+  margin: 0 0 0.85rem;
+  color: var(--color-brand-700);
+  font-size: 0.74rem;
+  font-weight: 780;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.quote-modal__header h2 {
+  max-width: 13ch;
+  margin: 0;
+  color: var(--color-brand-950);
+  font-size: clamp(2.35rem, 5vw, 4.5rem);
+  font-weight: 610;
+  letter-spacing: -0.058em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+@keyframes quote-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes quote-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+}
+
+@media (max-width: 40rem) {
+  .quote-modal {
+    padding: 0;
+    place-items: stretch;
+  }
+
+  .quote-modal__panel {
+    width: 100%;
+    max-height: 100svh;
+    padding: 4.75rem 1.25rem 2rem;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .quote-modal__close {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-modal,
+  .quote-modal__panel {
+    animation: none;
+  }
+}
