@@ -1,0 +1,70 @@
+@import './tokens.css';
+@import './motion.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--color-canvas);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: clip;
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.route-loading {
+  display: grid;
+  min-height: 55vh;
+  place-items: center;
+  color: var(--color-brand-700);
+  background: var(--color-canvas);
+  font-weight: 650;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

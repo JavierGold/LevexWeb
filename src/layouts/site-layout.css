@@ -1,0 +1,29 @@
+.site-shell {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.foundation-page {
+  display: grid;
+  min-height: clamp(28rem, 62vh, 44rem);
+  align-items: center;
+  width: min(calc(100% - (var(--container-inline) * 2)), var(--container-max));
+  margin-inline: auto;
+  padding-block: clamp(var(--space-12), 7vw, 6rem);
+}
+
+.foundation-page__title {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--color-brand-950);
+  font-size: var(--font-size-heading);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: var(--line-height-tight);
+  text-wrap: balance;
+}

@@ -1,0 +1,29 @@
+.scroll-reveal {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: scroll-reveal both linear;
+    animation-range: entry 3% cover 24%;
+    animation-timeline: view();
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    animation: none;
+  }
+}

@@ -1,0 +1,50 @@
+.brand-mark {
+  position: relative;
+  display: block;
+  width: 9.75rem;
+  aspect-ratio: 3.25;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-950);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.brand-mark:hover {
+  opacity: 0.92;
+}
+
+.brand-mark:active {
+  transform: translateY(1px);
+}
+
+.brand-mark__image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+
+.brand-mark--footer {
+  width: 12rem;
+}
+
+.brand-mark--header {
+  width: 10.75rem;
+  aspect-ratio: 3.4;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
+}
+
+.brand-mark--header .brand-mark__image {
+  width: 168%;
+}
+
+@media (max-width: 30rem) {
+  .brand-mark--header {
+    width: 9.25rem;
+  }
+}

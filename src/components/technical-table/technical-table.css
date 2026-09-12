@@ -1,0 +1,115 @@
+.technical-table__viewport {
+  width: 100%;
+}
+
+.technical-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-on-brand);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.technical-table th,
+.technical-table td {
+  padding: 0.92rem 0.75rem;
+  border-bottom: 1px solid rgb(255 255 255 / 13%);
+  text-align: left;
+  vertical-align: top;
+}
+
+.technical-table thead th {
+  padding-top: 0;
+  color: var(--color-brand-accent);
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.technical-table thead th:first-child,
+.technical-table tbody th {
+  width: 47%;
+}
+
+.technical-table thead th:nth-child(2),
+.technical-table thead th:nth-child(3) {
+  width: 26.5%;
+}
+
+.technical-table tbody th {
+  color: rgb(255 255 255 / 73%);
+  font-weight: 540;
+}
+
+.technical-table tbody td {
+  color: var(--color-on-brand);
+  font-weight: 630;
+}
+
+.technical-table tbody tr:last-child th,
+.technical-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 40rem) {
+  .technical-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .technical-table,
+  .technical-table tbody {
+    display: block;
+  }
+
+  .technical-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgb(255 255 255 / 13%);
+  }
+
+  .technical-table tbody th,
+  .technical-table tbody td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .technical-table tbody th {
+    grid-column: 1 / -1;
+    margin-bottom: 0.8rem;
+    color: var(--color-on-brand);
+    font-size: 0.92rem;
+    font-weight: 650;
+  }
+
+  .technical-table tbody td {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 0.84rem;
+  }
+
+  .technical-table tbody td::before {
+    display: block;
+    margin-bottom: 0.28rem;
+    color: var(--color-brand-accent);
+    content: attr(data-label);
+    font-size: 0.64rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .technical-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+}
