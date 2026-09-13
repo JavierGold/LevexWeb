@@ -97,23 +97,23 @@ export default function HomePage() {
           className="advice-section"
           aria-labelledby="advice-section-title"
         >
-          <div className="advice-section__inner scroll-reveal">
+          <div className="advice-section__inner">
             <div className="advice-section__copy">
-              <p className="advice-section__eyebrow">Asesoría personalizada</p>
-              <h2 id="advice-section-title">
+              <p className="advice-section__eyebrow advice-reveal">Asesoría personalizada</p>
+              <h2 className="advice-reveal" id="advice-section-title">
                 ¿Necesitas ayuda para elegir el equipo adecuado?
               </h2>
-              <p>
+              <p className="advice-reveal">
                 Cuéntanos sobre tu proyecto y te ayudamos a encontrar la plataforma
                 que necesitas.
               </p>
-              <Link className="advice-section__cta" to={ROUTES.contact}>
+              <Link className="advice-section__cta advice-reveal" to={ROUTES.contact}>
                 <span>Contáctanos</span>
                 <span aria-hidden="true">→</span>
               </Link>
             </div>
 
-            <div className="advice-section__visual" aria-hidden="true">
+            <div className="advice-section__visual advice-reveal" aria-hidden="true">
               <span className="advice-section__measure" />
               <img
                 src={adviceGiraffe}

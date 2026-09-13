@@ -1,15 +1,23 @@
-import { Link } from 'react-router-dom'
-import machineUrl from '../../../img/home_maquina_1.png'
-import facebookIconUrl from '../../../img/icon_facebook.svg'
-import instagramIconUrl from '../../../img/icon_instagram.svg'
-import { primaryNavigation } from '../../config/siteNavigation.js'
-import BrandMark from '../brand/BrandMark.jsx'
-import './site-footer.css'
+import { Link } from "react-router-dom";
+import machineUrl from "../../../img/home_maquina_1.png";
+import facebookIconUrl from "../../../img/icon_facebook.svg";
+import instagramIconUrl from "../../../img/icon_instagram.svg";
+import { primaryNavigation } from "../../config/siteNavigation.js";
+import BrandMark from "../brand/BrandMark.jsx";
+import "./site-footer.css";
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/', icon: instagramIconUrl },
-  { label: 'Facebook', href: 'https://www.facebook.com/', icon: facebookIconUrl },
-]
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/levex.mx?igsh=ZnB3eTAzdWxjNnA0",
+    icon: instagramIconUrl,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/LEVEX/61573830044277/?mibextid=wwXIfr&rdid=TONqw1GHEUjYHmFn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1HfRDheH72%2F%3Fmibextid%3DwwXIfr",
+    icon: facebookIconUrl,
+  },
+];
 
 export default function SiteFooter() {
   return (
@@ -32,9 +40,15 @@ export default function SiteFooter() {
           </div>
 
           <div className="site-footer__columns">
-            <section className="footer-section" aria-labelledby="footer-navigation-title">
+            <section
+              className="footer-section"
+              aria-labelledby="footer-navigation-title"
+            >
               <h2 id="footer-navigation-title">Navegación</h2>
-              <nav className="footer-links" aria-label="Navegación del pie de página">
+              <nav
+                className="footer-links"
+                aria-label="Navegación del pie de página"
+              >
                 {primaryNavigation.map(({ label, to }) => (
                   <Link key={to} to={to}>
                     {label}
@@ -43,7 +57,10 @@ export default function SiteFooter() {
               </nav>
             </section>
 
-            <section className="footer-section" aria-labelledby="footer-contact-title">
+            <section
+              className="footer-section"
+              aria-labelledby="footer-contact-title"
+            >
               <h2 id="footer-contact-title">Contacto</h2>
               <div className="footer-links">
                 <a href="mailto:contacto@levexco.com">contacto@levexco.com</a>
@@ -52,7 +69,10 @@ export default function SiteFooter() {
               </div>
             </section>
 
-            <section className="footer-section" aria-labelledby="footer-offices-title">
+            <section
+              className="footer-section"
+              aria-labelledby="footer-offices-title"
+            >
               <h2 id="footer-offices-title">Oficinas</h2>
               <address>
                 Blv. Campestre 2502 Piso 7
@@ -63,11 +83,19 @@ export default function SiteFooter() {
               </address>
             </section>
 
-            <section className="footer-section" aria-labelledby="footer-social-title">
+            <section
+              className="footer-section"
+              aria-labelledby="footer-social-title"
+            >
               <h2 id="footer-social-title">Redes sociales</h2>
               <div className="footer-links footer-links--social">
                 {socialLinks.map(({ label, href, icon }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span className="footer-social-icon" aria-hidden="true">
                       <img src={icon} alt="" width="24" height="24" />
                     </span>
@@ -85,5 +113,5 @@ export default function SiteFooter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

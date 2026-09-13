@@ -4,6 +4,7 @@ import './contact-form.css'
 const initialValues = Object.freeze({
   firstName: '',
   lastName: '',
+  companyName: '',
   email: '',
   phone: '',
   subject: '',
@@ -24,6 +25,14 @@ const fields = Object.freeze([
     type: 'text',
     autoComplete: 'family-name',
     maxLength: 80,
+  }),
+  Object.freeze({
+    name: 'companyName',
+    label: 'Nombre de la empresa',
+    type: 'text',
+    autoComplete: 'organization',
+    maxLength: 120,
+    wide: true,
   }),
   Object.freeze({
     name: 'email',

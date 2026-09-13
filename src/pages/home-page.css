@@ -363,6 +363,10 @@
   bottom: 0;
 }
 
+.advice-reveal {
+  opacity: 1;
+}
+
 .why-section {
   padding: clamp(6rem, 10vw, 10rem) 0;
   background: var(--color-surface);
@@ -424,16 +428,6 @@
   background: var(--color-brand-100);
   border-radius: 50%;
   font-size: 0.85rem;
-  transition:
-    color var(--transition-base),
-    background-color var(--transition-base),
-    transform var(--transition-base);
-}
-
-.benefits-list li:hover .benefits-list__mark {
-  color: var(--color-on-brand);
-  background: var(--color-brand-700);
-  transform: rotate(-5deg) scale(1.05);
 }
 
 .safety-panel {
@@ -454,7 +448,30 @@
   color: var(--color-brand-950);
   background: var(--color-brand-accent);
   border-radius: 1.1rem;
-  transform: rotate(-3deg);
+}
+
+@supports (animation-timeline: view()) {
+  .advice-reveal {
+    animation: advice-reveal both linear;
+    animation-range: entry 2% cover 24%;
+    animation-timeline: view();
+  }
+
+  .advice-section__visual.advice-reveal {
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+@keyframes advice-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .safety-panel__icon svg {
@@ -966,7 +983,6 @@
 
   .advice-section__cta,
   .advice-section__cta > span:last-child,
-  .benefits-list__mark,
   .services-grid > li,
   .services-grid__icon {
     transition-duration: 0.01ms;
@@ -974,9 +990,12 @@
 
   .advice-section__cta:hover,
   .advice-section__cta:hover > span:last-child,
-  .benefits-list li:hover .benefits-list__mark,
   .services-grid > li:hover,
   .services-grid > li:hover .services-grid__icon {
     transform: none;
+  }
+
+  .advice-reveal {
+    animation: none;
   }
 }

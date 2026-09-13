@@ -1,7 +1,8 @@
 import whatsappIconUrl from '../../../img/whatsapp_logo.png'
 import './whatsapp-button.css'
 
-const WHATSAPP_URL = 'https://wa.me/524791050766'
+const WHATSAPP_MESSAGE = 'Hola, me gustaría solicitar información sobre la renta de plataformas.'
+const WHATSAPP_URL = `https://wa.me/524791050766?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 export default function WhatsAppButton() {
   return (

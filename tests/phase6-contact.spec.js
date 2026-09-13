@@ -25,11 +25,13 @@ test('valida Contacto y reutiliza el formulario en el modal COTIZAR', async ({ p
 
   const pageForm = page.locator('.contact-form-panel .contact-form')
   await pageForm.getByRole('button', { name: 'Enviar' }).click()
-  await expect(pageForm.locator('.contact-form__error')).toHaveCount(6)
-  await expect(pageForm.getByLabel('Nombre')).toBeFocused()
+  await expect(pageForm.locator('.contact-form__error')).toHaveCount(7)
+  const firstNameField = pageForm.locator('input[name="firstName"]')
+  await expect(firstNameField).toBeFocused()
 
-  await pageForm.getByLabel('Nombre').fill('María')
+  await firstNameField.fill('María')
   await pageForm.getByLabel('Apellido').fill('López')
+  await pageForm.getByLabel('Nombre de la empresa').fill('Construcciones del Bajío')
   await pageForm.getByLabel('Correo electrónico').fill('correo-invalido')
   await pageForm.getByLabel('Teléfono').fill('123')
   await pageForm.getByLabel('Asunto').fill('Renta de plataforma')
@@ -55,7 +57,7 @@ test('valida Contacto y reutiliza el formulario en el modal COTIZAR', async ({ p
   const dialog = page.getByRole('dialog', { name: 'Cuéntanos sobre tu proyecto' })
   await expect(dialog).toBeVisible()
   await expect(dialog.locator('.contact-form')).toHaveCount(1)
-  await expect(dialog.locator('input[required], textarea[required]')).toHaveCount(6)
+  await expect(dialog.locator('input[required], textarea[required]')).toHaveCount(7)
   await expect(dialog.getByRole('button', { name: 'Cerrar cotización' })).toBeFocused()
   await dialog.screenshot({ path: 'test-results/phase6-quote-modal.png' })
 

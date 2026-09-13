@@ -1,5 +1,5 @@
-@import './tokens.css';
-@import './motion.css';
+@import "./tokens.css";
+@import "./motion.css";
 
 *,
 *::before,
@@ -67,4 +67,8 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+.highlight-green {
+  color: #0f4b2d;
+  font-weight: 700;
 }

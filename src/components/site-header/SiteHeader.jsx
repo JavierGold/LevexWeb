@@ -123,10 +123,8 @@ export default function SiteHeader({ onQuoteRequest }) {
           aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
         >
-          <span className="menu-toggle__label" aria-hidden="true">
-            Menú
-          </span>
           <span className="menu-toggle__icon" data-open={isMenuOpen} aria-hidden="true">
+            <span />
             <span />
             <span />
           </span>

@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
-import { ROUTES } from '../app/routes.js'
-import { aboutApplications } from '../data/aboutContent.js'
-import heroMachine from '../../img/GENIE_1.png'
-import applicationsGiraffe from '../../img/jirafa_1.png'
-import './about-page.css'
+import { Link } from "react-router-dom";
+import { ROUTES } from "../app/routes.js";
+import { aboutApplications, aboutTimeline } from "../data/aboutContent.js";
+import heroMachine from "../../img/GENIE_1.png";
+import applicationsGiraffe from "../../img/jirafa_1.png";
+import "./about-page.css";
 
 export default function AboutPage() {
   return (
@@ -55,22 +55,55 @@ export default function AboutPage() {
 
             <div className="precision-section__body">
               <p>
-                En LEVEX ofrecemos plataformas articuladas de última generación,
-                ideales para trabajos en altura que requieren alcance horizontal,
-                vertical, precisión y seguridad. Todos nuestros equipos cuentan con
-                certificación.
+                En LEVEX ofrecemos{" "}
+                <strong className="highlight-green">
+                  plataformas articuladas
+                </strong>{" "}
+                y{" "}
+                <strong className="highlight-green">
+                  plataformas de tijera
+                </strong>{" "}
+                de última generación, ideales para trabajos en altura que
+                requieren alcance, precisión y seguridad. Todos nuestros equipos
+                cuentan con certificación.
               </p>
               <p>
                 Son la solución perfecta para mantenimiento, construcción,
                 instalaciones industriales y proyectos especializados.
               </p>
 
-              <ul className="precision-section__principles" aria-label="Principios LEVEX">
+              <ul
+                className="precision-section__principles"
+                aria-label="Principios LEVEX"
+              >
                 <li>Seguridad</li>
                 <li>Precisión</li>
                 <li>Rendimiento</li>
               </ul>
             </div>
+          </div>
+        </section>
+
+        <section className="timeline-section" aria-label="Historia de LEVEX">
+          <div className="timeline-section__inner">
+            <span className="timeline-section__track" aria-hidden="true">
+              <span className="timeline-section__fill" />
+            </span>
+
+            <ol className="timeline-section__stages">
+              {aboutTimeline.map((stage) => (
+                <li className="timeline-stage" key={stage.year}>
+                  <span className="timeline-stage__marker" aria-hidden="true" />
+                  <article>
+                    <h2>
+                      <time dateTime={stage.year}>{stage.year}</time>
+                      <span> — {stage.title}</span>
+                    </h2>
+                    <p>{stage.description}</p>
+                  </article>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -97,17 +130,25 @@ export default function AboutPage() {
                   loading="lazy"
                   decoding="async"
                 />
-                <figcaption>Alcance para proyectos que exigen más altura.</figcaption>
+                <figcaption>
+                  Alcance para proyectos que exigen más altura.
+                </figcaption>
               </figure>
 
               <ol className="applications-grid">
                 {aboutApplications.map((application, index) => (
                   <li key={application}>
-                    <span className="applications-grid__number" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
+                    <span
+                      className="applications-grid__number"
+                      aria-hidden="true"
+                    >
+                      {String(index + 1).padStart(2, "0")}
                     </span>
                     <h3>{application}</h3>
-                    <span className="applications-grid__line" aria-hidden="true" />
+                    <span
+                      className="applications-grid__line"
+                      aria-hidden="true"
+                    />
                   </li>
                 ))}
               </ol>
@@ -116,5 +157,5 @@ export default function AboutPage() {
         </section>
       </main>
     </>
-  )
+  );
 }
