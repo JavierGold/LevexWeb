@@ -1,4 +1,4 @@
-import whatsappIconUrl from '../../../img/whatsapp_logo.png'
+import whatsappIconUrl from '../../../img/whatsapp_logo.webp'
 import './whatsapp-button.css'
 
 const WHATSAPP_MESSAGE = 'Hola, me gustaría solicitar información sobre la renta de plataformas.'

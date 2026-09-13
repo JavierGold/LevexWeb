@@ -10,8 +10,8 @@ import {
   homeTestimonials,
   safetyControls,
 } from '../data/homeContent.js'
-import heroMachine from '../../img/home_maquina_1.png'
-import adviceGiraffe from '../../img/jirafa_2.png'
+import heroMachine from '../../img/home_maquina_1.webp'
+import adviceGiraffe from '../../img/jirafa_2.webp'
 import './home-page.css'
 
 export default function HomePage() {
@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       <title>Inicio | LEVEX</title>
 
-      <main className="home-page">
+      <div className="home-page">
         <section className="home-hero" aria-labelledby="home-hero-title">
           <div className="home-hero__inner">
             <div className="home-hero__copy">
@@ -202,7 +202,7 @@ export default function HomePage() {
             <TestimonialsCarousel testimonials={homeTestimonials} />
           </div>
         </section>
-      </main>
+      </div>
     </>
   )
 }

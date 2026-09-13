@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import { submitContactForm } from '../../services/contactApi.js'
 import './contact-form.css'
 
 const initialValues = Object.freeze({
@@ -89,10 +90,6 @@ function validateField(name, value) {
   return ''
 }
 
-function simulateFrontendSubmission() {
-  return new Promise((resolve) => window.setTimeout(resolve, 550))
-}
-
 function FormField({ field, formId, value, error, onBlur, onChange }) {
   const inputId = `${formId}-${field.name}`
   const errorId = `${inputId}-error`
@@ -142,7 +139,7 @@ function FormField({ field, formId, value, error, onBlur, onChange }) {
   )
 }
 
-export default function ContactForm({ onSubmit = simulateFrontendSubmission }) {
+export default function ContactForm({ origin, onSubmit = submitContactForm }) {
   const formId = useId()
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
@@ -186,7 +183,7 @@ export default function ContactForm({ onSubmit = simulateFrontendSubmission }) {
     setStatus('submitting')
 
     try {
-      await onSubmit(normalizedValues)
+      await onSubmit({ ...normalizedValues, origin })
       setStatus('success')
     } catch {
       setStatus('error')

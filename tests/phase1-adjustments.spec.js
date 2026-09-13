@@ -76,7 +76,7 @@ test('Equipo navega desde otra ruta a Inicio con el hash estable', async ({ page
 test('footer mantiene maquinaria tenue y muestra títulos e iconos locales', async ({ page }) => {
   await page.goto('/')
 
-  const footer = page.locator('footer')
+  const footer = page.locator('.site-footer')
   await footer.scrollIntoViewIfNeeded()
 
   for (const title of ['Navegación', 'Contacto', 'Oficinas', 'Redes sociales']) {
@@ -123,11 +123,11 @@ test('WhatsApp permanece fijo, accesible y dentro del viewport', async ({ page }
 
   const whatsapp = page.getByRole('link', { name: /Contactar a LEVEX por WhatsApp/i })
   await expect(whatsapp).toBeVisible()
-  await expect(whatsapp).toHaveAttribute('href', 'https://wa.me/524791050766')
+  await expect(whatsapp).toHaveAttribute('href', /^https:\/\/wa\.me\/524791050766\?text=/)
   await expect(whatsapp).toHaveAttribute('target', '_blank')
   await expect(whatsapp).toHaveAttribute('rel', /noopener/)
   await expect(whatsapp.locator('img')).toBeVisible()
-  await expect(whatsapp.locator('img')).toHaveAttribute('src', /^data:image\/svg\+xml/)
+  await expect(whatsapp.locator('img')).toHaveAttribute('src', /whatsapp_logo.*\.webp/)
 
   const initialBox = await whatsapp.boundingBox()
   expect(initialBox.width).toBeGreaterThanOrEqual(68)
@@ -137,7 +137,7 @@ test('WhatsApp permanece fijo, accesible y dentro del viewport', async ({ page }
   const position = await whatsapp.evaluate((element) => getComputedStyle(element).position)
   expect(position).toBe('fixed')
 
-  await page.locator('footer').scrollIntoViewIfNeeded()
+  await page.locator('.site-footer').scrollIntoViewIfNeeded()
   const scrolledBox = await whatsapp.boundingBox()
   expect(Math.abs(scrolledBox.y - initialBox.y)).toBeLessThan(2)
   expect(scrolledBox.x).toBeGreaterThanOrEqual(0)

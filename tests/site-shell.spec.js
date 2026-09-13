@@ -18,7 +18,7 @@ test('header y footer se adaptan sin overflow', async ({ page }) => {
     await expect(menuButton).toBeHidden()
   }
 
-  const footer = page.locator('footer')
+  const footer = page.locator('.site-footer')
   await expect(footer.getByRole('heading', { name: 'Navegación' })).toBeVisible()
   await expect(footer.getByRole('heading', { name: 'Contacto' })).toBeVisible()
   await expect(footer.getByRole('heading', { name: 'Oficinas' })).toBeVisible()
@@ -76,9 +76,12 @@ test('CTA, contacto, navegación de footer y redes tienen destinos válidos', as
     await page.locator('.header-cta--desktop').click()
   }
 
-  await expect(page).toHaveURL('/contacto')
+  const dialog = page.getByRole('dialog', { name: 'Cuéntanos sobre tu proyecto' })
+  await expect(dialog).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(dialog).toBeHidden()
 
-  const footer = page.locator('footer')
+  const footer = page.locator('.site-footer')
   await expect(footer.getByRole('link', { name: 'contacto@levexco.com' })).toHaveAttribute(
     'href',
     'mailto:contacto@levexco.com',

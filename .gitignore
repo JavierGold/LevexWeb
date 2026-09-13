@@ -7,3 +7,11 @@ test-results/
 *.log
 .DS_Store
 Thumbs.db
+
+# Terraform local state and generated packages
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.*
+infra/*.tfplan
+infra/*.zip
+infra/terraform.tfvars

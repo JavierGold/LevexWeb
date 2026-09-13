@@ -137,7 +137,6 @@ export default function SiteHeader({ onQuoteRequest }) {
             <NavigationLinks mobile onNavigate={closeMenu} />
             <HeaderCta
               className="header-cta--mobile"
-              onNavigate={closeMenu}
               onQuoteRequest={onQuoteRequest}
             />
           </nav>

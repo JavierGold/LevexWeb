@@ -2,14 +2,12 @@
 
 ## Estado actual
 
-- **Fase 6 — Página Contacto y formulario frontend:** completada.
-- Implementados encabezado, directorio de contacto, `img/jirafa_3.png` y enlaces de email, teléfono y WhatsApp.
-- Formulario reutilizable en Contacto y modal COTIZAR, con validaciones y estados normal, focus, completado, error, envío y éxito.
-- Validación focalizada: **1 prueba aprobada**. Lint y build: **correctos**.
+- **Fase 9 — Integración AWS del formulario:** completada.
+- Frontend compartido conectado al endpoint desplegado de HTTP API → Lambda → SES; `Contacto` y `Cotizar` conservan validaciones y estados existentes.
+- Envío real desde `http://localhost:5173`: **correcto** (HTTP 200 y confirmación AWS antes del estado de éxito). Error accesible validado con respuesta controlada.
+- Lint y build: **correctos**.
 
 ## Pendientes relevantes
 
-- **Fase 3:** incorporar `img/SINOBOOM_2.png` cuando el recurso esté disponible y validar únicamente esa incorporación.
-- Integrar el envío real del formulario mediante AWS en la etapa final; actualmente usa una simulación frontend.
+- Fase 10: agregar el dominio final de CloudFront a CORS y realizar el despliegue correspondiente.
 - Sustituir los enlaces provisionales de redes sociales cuando se entreguen las URLs oficiales.
-- Esperar instrucción explícita antes de iniciar la Fase 7.

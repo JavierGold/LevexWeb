@@ -21,7 +21,7 @@ export default function EquipmentDetailPage() {
     <>
       <title>{`${equipment.brand} ${equipment.model} | LEVEX`}</title>
 
-      <main className="equipment-detail">
+      <div className="equipment-detail">
         <section
           className="equipment-detail__overview"
           aria-labelledby="equipment-detail-title"
@@ -66,6 +66,7 @@ export default function EquipmentDetailPage() {
 
             <div
               className={`equipment-detail__photos${galleryClassName}`}
+              role="group"
               aria-label={`Galería de ${equipment.brand} ${equipment.model}`}
             >
               {equipment.photos.map((photo, index) => (
@@ -106,7 +107,7 @@ export default function EquipmentDetailPage() {
             </figure>
           </div>
         </section>
-      </main>
+      </div>
     </>
   )
 }

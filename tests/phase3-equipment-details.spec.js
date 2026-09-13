@@ -19,7 +19,7 @@ const equipmentRoutes = [
     path: '/equipos/sinoboom-0808-2732',
     brand: 'SINOBOOM',
     model: '0808(2732)',
-    images: ['SINOBOOM_1', 'SINOBOOM_3'],
+    images: ['SINOBOOM_1', 'SINOBOOM_2', 'SINOBOOM_3'],
     sampleRow: /Altura máxima de trabajo(?: Métrico)? 10\.1 m(?: US)? 33'2"/,
   },
 ]

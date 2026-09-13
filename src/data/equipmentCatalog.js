@@ -1,6 +1,6 @@
-import genieImage from '../../img/GENIE_1.png'
-import jlgImage from '../../img/JLG_1.png'
-import sinoboomImage from '../../img/SINOBOOM_1.png'
+import genieImage from '../../img/GENIE_1.webp'
+import jlgImage from '../../img/JLG_1.webp'
+import sinoboomImage from '../../img/SINOBOOM_1.webp'
 
 export const equipmentCatalog = [
   {

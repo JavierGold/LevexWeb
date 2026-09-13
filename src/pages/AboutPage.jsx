@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../app/routes.js";
 import { aboutApplications, aboutTimeline } from "../data/aboutContent.js";
-import heroMachine from "../../img/GENIE_1.png";
-import applicationsGiraffe from "../../img/jirafa_1.png";
+import heroMachine from "../../img/GENIE_1.webp";
+import applicationsGiraffe from "../../img/jirafa_1.webp";
 import "./about-page.css";
 
 export default function AboutPage() {
@@ -10,7 +10,7 @@ export default function AboutPage() {
     <>
       <title>Sobre Nosotros | LEVEX</title>
 
-      <main className="about-page">
+      <div className="about-page">
         <section className="about-hero" aria-labelledby="about-hero-title">
           <div className="about-hero__inner">
             <div className="about-hero__copy">
@@ -155,7 +155,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

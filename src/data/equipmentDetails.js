@@ -1,11 +1,12 @@
-import genieImageOne from '../../img/GENIE_1.png'
-import genieImageTwo from '../../img/GENIE_2.png'
-import genieDrawing from '../../img/GENIE_3.png'
-import jlgImageOne from '../../img/JLG_1.png'
-import jlgImageTwo from '../../img/JLG_2.png'
-import jlgDrawing from '../../img/JLG_3.png'
-import sinoboomImageOne from '../../img/SINOBOOM_1.png'
-import sinoboomDrawing from '../../img/SINOBOOM_3.png'
+import genieImageOne from '../../img/GENIE_1.webp'
+import genieImageTwo from '../../img/GENIE_2.webp'
+import genieDrawing from '../../img/GENIE_3.webp'
+import jlgImageOne from '../../img/JLG_1.webp'
+import jlgImageTwo from '../../img/JLG_2.webp'
+import jlgDrawing from '../../img/JLG_3.webp'
+import sinoboomImageOne from '../../img/SINOBOOM_1.webp'
+import sinoboomImageTwo from '../../img/SINOBOOM_2.webp'
+import sinoboomDrawing from '../../img/SINOBOOM_3.webp'
 
 const equipmentDetails = [
   {
@@ -136,6 +137,12 @@ const equipmentDetails = [
         alt: 'SINOBOOM 0808(2732) elevada, vista completa',
         width: 409,
         height: 704,
+      },
+      {
+        src: sinoboomImageTwo,
+        alt: 'SINOBOOM 0808(2732) en configuración compacta',
+        width: 1240,
+        height: 1268,
       },
     ],
     drawing: {

@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 
-test('ajusta los dos bloques móviles y gestiona el scroll entre rutas', async ({ page }) => {
+test('ajusta los dos bloques móviles y gestiona el scroll entre rutas', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile')
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
 

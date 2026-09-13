@@ -66,6 +66,12 @@
   box-shadow: 0 0 0 3px rgb(42 103 64 / 12%);
 }
 
+.contact-form__field input:focus-visible,
+.contact-form__field textarea:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .contact-form__field.is-complete::after {
   position: absolute;
   top: 2.83rem;

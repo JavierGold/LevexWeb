@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logoUrl from '../../../img/logo.JPG'
+import logoUrl from '../../../img/logo.webp'
 import { ROUTES } from '../../app/routes.js'
 import './brand-mark.css'
 

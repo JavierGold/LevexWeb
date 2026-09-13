@@ -12,21 +12,21 @@ const AboutPage = lazy(() => import('../pages/AboutPage.jsx'))
 const ContactPage = lazy(() => import('../pages/ContactPage.jsx'))
 
 const aboutPageFallback = (
-  <main className="route-loading" aria-live="polite">
+  <div className="route-loading" role="status" aria-live="polite">
     Cargando Sobre Nosotros…
-  </main>
+  </div>
 )
 
 const contactPageFallback = (
-  <main className="route-loading" aria-live="polite">
+  <div className="route-loading" role="status" aria-live="polite">
     Cargando Contacto…
-  </main>
+  </div>
 )
 
 const equipmentDetailFallback = (
-  <main className="route-loading" aria-live="polite">
+  <div className="route-loading" role="status" aria-live="polite">
     Cargando equipo…
-  </main>
+  </div>
 )
 
 export default function App() {

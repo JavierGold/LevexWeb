@@ -22,7 +22,7 @@ export default defineConfig({
     { name: 'mobile', use: { viewport: { width: 390, height: 844 } } },
   ],
   webServer: {
-    command: 'npm.cmd run dev -- --host 127.0.0.1 --port 4173',
+    command: 'npm.cmd run dev -- --mode test --host 127.0.0.1 --port 4173',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: true,
   },

@@ -34,7 +34,7 @@ test('WhatsApp usa el PNG local y conserva el botón de icono único', async ({
 
   await expect(button).toBeVisible()
   await expect(button).toHaveText('')
-  await expect(icon).toHaveAttribute('src', /whatsapp_logo\.png/)
+  await expect(icon).toHaveAttribute('src', /whatsapp_logo\.webp/)
   await expect
     .poll(async () => icon.evaluate((image) => image.naturalWidth))
     .toBeGreaterThan(0)

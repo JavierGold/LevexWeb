@@ -1,6 +1,6 @@
 import ContactForm from '../components/contact-form/ContactForm.jsx'
 import { contactDetails } from '../data/contactContent.js'
-import contactGiraffe from '../../img/jirafa_3.png'
+import contactGiraffe from '../../img/jirafa_3.webp'
 import './contact-page.css'
 
 export default function ContactPage() {
@@ -8,7 +8,7 @@ export default function ContactPage() {
     <>
       <title>Contacto | LEVEX</title>
 
-      <main className="contact-page">
+      <div className="contact-page">
         <section className="contact-hero" aria-labelledby="contact-hero-title">
           <div className="contact-hero__inner">
             <p className="contact-eyebrow contact-eyebrow--light">Hablemos</p>
@@ -53,6 +53,7 @@ export default function ContactPage() {
                     href={contactDetails.whatsapp.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${contactDetails.whatsapp.label}; abre en una pestaña nueva`}
                   >
                     {contactDetails.whatsapp.label}
                   </a>
@@ -85,11 +86,11 @@ export default function ContactPage() {
                 <p className="contact-eyebrow">Escríbenos</p>
                 <h2 id="contact-form-title">Envíanos tu mensaje</h2>
               </header>
-              <ContactForm />
+              <ContactForm origin="Contacto" />
             </section>
           </div>
         </section>
-      </main>
+      </div>
     </>
   )
 }

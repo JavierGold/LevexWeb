@@ -31,7 +31,7 @@ test('las cuatro secciones muestran el contenido definido y se adaptan al viewpo
     '/contacto',
   )
   const giraffe = advice.locator('img')
-  await expect(giraffe).toHaveAttribute('src', /jirafa_2\.png/)
+  await expect(giraffe).toHaveAttribute('src', /jirafa_2\.webp/)
   await expect
     .poll(async () => giraffe.evaluate((image) => image.naturalWidth))
     .toBeGreaterThan(0)
@@ -94,7 +94,7 @@ test('el carrusel responde a flechas e indicadores y conserva los testimonios', 
   await expect(carousel.getByText(/Excelente servicio y equipos/)).toBeVisible()
 
   await carousel.getByRole('button', { name: 'Mostrar opinión 4 de 4' }).click()
-  await expect(carousel.getByText(/Seguridad y calidad garantizadas/)).toBeVisible()
+  await expect(carousel.getByText(/Equipos en nuevos y una excelente atención/)).toBeVisible()
   await expect(carousel.locator('.testimonials-carousel__controls > span')).toHaveText(
     '04 / 04',
   )
@@ -105,5 +105,5 @@ test('el carrusel responde a flechas e indicadores y conserva los testimonios', 
   )
   await expect(
     carousel.getByRole('button', { name: 'Mostrar opinión 3 de 4' }),
-  ).toHaveAttribute('aria-current', 'true')
+  ).toHaveAttribute('aria-pressed', 'true')
 })

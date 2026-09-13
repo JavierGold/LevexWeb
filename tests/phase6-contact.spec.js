@@ -1,6 +1,30 @@
 import { expect, test } from '@playwright/test'
 
+async function fillValidForm(form, values = {}) {
+  await form.locator('input[name="firstName"]').fill(values.firstName || 'María')
+  await form.getByLabel('Apellido').fill(values.lastName || 'López')
+  await form
+    .getByLabel('Nombre de la empresa')
+    .fill(values.companyName || 'Construcciones del Bajío')
+  await form.getByLabel('Correo electrónico').fill(values.email || 'maria@example.com')
+  await form.getByLabel('Teléfono').fill(values.phone || '479 105 0766')
+  await form.getByLabel('Asunto').fill(values.subject || 'Renta de plataforma')
+  await form
+    .getByLabel('Mensaje')
+    .fill(values.message || 'Necesito información para un proyecto.')
+}
+
 test('valida Contacto y reutiliza el formulario en el modal COTIZAR', async ({ page }) => {
+  const submissions = []
+  await page.route('**/__test-contact', async (route) => {
+    submissions.push(route.request().postDataJSON())
+    await new Promise((resolve) => setTimeout(resolve, 350))
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ ok: true }),
+    })
+  })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/contacto')
 
@@ -46,19 +70,51 @@ test('valida Contacto y reutiliza el formulario en el modal COTIZAR', async ({ p
   await expect(pageForm).toHaveAttribute('aria-busy', 'true')
   await expect(pageForm.getByRole('button', { name: 'Enviando…' })).toBeDisabled()
   await expect(page.getByRole('heading', { name: 'Gracias por tu mensaje' })).toBeVisible()
+  expect(submissions).toHaveLength(1)
+  expect(submissions[0]).toMatchObject({
+    firstName: 'María',
+    lastName: 'López',
+    companyName: 'Construcciones del Bajío',
+    email: 'maria@example.com',
+    phone: '479 105 0766',
+    subject: 'Renta de plataforma',
+    message: 'Necesito información para un proyecto.',
+    origin: 'Contacto',
+  })
 
   await page.screenshot({
     path: 'test-results/phase6-contact-page.png',
     fullPage: true,
   })
 
-  const quoteTrigger = page.getByRole('button', { name: 'Cotizar' })
+  if (page.viewportSize().width <= 1088) {
+    await page.getByRole('button', { name: 'Abrir menú' }).click()
+  }
+  const quoteTrigger = page.locator('.header-cta:visible')
   await quoteTrigger.click()
   const dialog = page.getByRole('dialog', { name: 'Cuéntanos sobre tu proyecto' })
   await expect(dialog).toBeVisible()
   await expect(dialog.locator('.contact-form')).toHaveCount(1)
   await expect(dialog.locator('input[required], textarea[required]')).toHaveCount(7)
   await expect(dialog.getByRole('button', { name: 'Cerrar cotización' })).toBeFocused()
+
+  const modalForm = dialog.locator('.contact-form')
+  await fillValidForm(modalForm, {
+    firstName: 'Carlos',
+    lastName: 'Ramírez',
+    companyName: 'Proyecto Altura',
+    email: 'carlos@example.com',
+    phone: '477 117 8881',
+    subject: 'Cotización desde modal',
+    message: 'Solicito disponibilidad y precio del equipo.',
+  })
+  await modalForm.getByRole('button', { name: 'Enviar' }).click()
+  await expect(dialog.getByRole('heading', { name: 'Gracias por tu mensaje' })).toBeVisible()
+  expect(submissions).toHaveLength(2)
+  expect(submissions[1]).toMatchObject({
+    firstName: 'Carlos',
+    origin: 'Cotizar',
+  })
   await dialog.screenshot({ path: 'test-results/phase6-quote-modal.png' })
 
   await page.keyboard.press('Escape')
@@ -69,4 +125,29 @@ test('valida Contacto y reutiliza el formulario en el modal COTIZAR', async ({ p
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
   )
   expect(hasHorizontalOverflow).toBe(false)
+})
+
+test('mantiene el formulario y muestra error cuando AWS rechaza el envío', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop')
+
+  await page.route('**/__test-contact', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 350))
+    await route.fulfill({
+      status: 502,
+      contentType: 'application/json',
+      body: JSON.stringify({ ok: false }),
+    })
+  })
+  await page.goto('/contacto')
+
+  const form = page.locator('.contact-form-panel .contact-form')
+  await fillValidForm(form)
+  await form.getByRole('button', { name: 'Enviar' }).click()
+
+  await expect(form).toHaveAttribute('aria-busy', 'true')
+  await expect(form.getByRole('alert')).toContainText('No fue posible completar el envío')
+  await expect(form.getByRole('button', { name: 'Enviar' })).toBeEnabled()
+  await expect(page.getByRole('heading', { name: 'Gracias por tu mensaje' })).toHaveCount(0)
 })

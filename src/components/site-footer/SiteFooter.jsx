@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import machineUrl from "../../../img/home_maquina_1.png";
+import machineUrl from "../../../img/home_maquina_1.webp";
 import facebookIconUrl from "../../../img/icon_facebook.svg";
 import instagramIconUrl from "../../../img/icon_instagram.svg";
 import { primaryNavigation } from "../../config/siteNavigation.js";
@@ -95,6 +95,7 @@ export default function SiteFooter() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${label}; abre en una pestaña nueva`}
                   >
                     <span className="footer-social-icon" aria-hidden="true">
                       <img src={icon} alt="" width="24" height="24" />

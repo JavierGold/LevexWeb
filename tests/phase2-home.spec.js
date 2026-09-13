@@ -54,7 +54,7 @@ test('Inicio presenta Hero y catálogo responsive con el contenido definido', as
     'href',
     '/#equipos',
   )
-  await expect(page.getByRole('link', { name: 'Contáctanos' })).toHaveAttribute(
+  await expect(page.locator('.home-hero').getByRole('link', { name: 'Contáctanos' })).toHaveAttribute(
     'href',
     '/contacto',
   )
@@ -142,7 +142,7 @@ test('CTAs, ancla Equipo y tarjetas navegan a sus destinos', async ({ page }) =>
     .scrollIntoViewIfNeeded()
   await page.getByRole('link', { name: 'Ver equipo GENIE GS-3246' }).click()
   await expect(page).toHaveURL('/equipos/genie-gs-3246')
-  await expect(page.getByRole('heading', { name: 'Detalle de equipo' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: 'GS-3246' })).toBeVisible()
 
   for (const item of equipment.slice(1)) {
     await page.goto('/')
@@ -152,7 +152,7 @@ test('CTAs, ancla Equipo y tarjetas navegan a sus destinos', async ({ page }) =>
     await link.scrollIntoViewIfNeeded()
     await link.click()
     await expect(page).toHaveURL(item.path)
-    await expect(page.getByRole('heading', { name: 'Detalle de equipo' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: item.model })).toBeVisible()
   }
 })
 

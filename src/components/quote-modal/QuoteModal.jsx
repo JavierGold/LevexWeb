@@ -97,7 +97,7 @@ export default function QuoteModal({ isOpen, onClose }) {
           <h2 id="quote-modal-title">Cuéntanos sobre tu proyecto</h2>
         </header>
 
-        <ContactForm />
+        <ContactForm origin="Cotizar" />
       </section>
     </div>
   )

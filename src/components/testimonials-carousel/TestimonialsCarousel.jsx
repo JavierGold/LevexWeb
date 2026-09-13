@@ -38,14 +38,18 @@ export default function TestimonialsCarousel({ testimonials }) {
       </div>
 
       <div className="testimonials-carousel__navigation">
-        <div className="testimonials-carousel__indicators" aria-label="Opiniones">
+        <div
+          className="testimonials-carousel__indicators"
+          role="group"
+          aria-label="Seleccionar opinión"
+        >
           {testimonials.map((testimonial, index) => (
             <button
               className="testimonials-carousel__indicator"
               type="button"
               key={`${testimonial.author}-${index}`}
               aria-label={`Mostrar opinión ${index + 1} de ${testimonials.length}`}
-              aria-current={index === activeIndex ? 'true' : undefined}
+              aria-pressed={index === activeIndex}
               onClick={() => setActiveIndex(index)}
             />
           ))}
